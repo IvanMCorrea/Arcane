@@ -11,32 +11,44 @@
   font-family: 'Fredoka', sans-serif; }
 
 a {
-  text-decoration: none;
-  color: whitesmoke; }
+  text-decoration: none; }
 
 .Background {
-  background: linear-gradient(-225deg, #473B7B 0%, #3584A7 61%, #30D2BE 100%);
+  background: linear-gradient(-225deg, #2d264d 0%, #0e475f 78%, #1f867a 100%);
   min-height: 100vh;
   min-width: 100vw; }
 
 .navegador {
-  padding-top: 5rem;
-  padding-bottom: 5rem; }
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #303030;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5); }
 
 .navegador__items {
-  justify-content: center; }
+  justify-content: center;
+  align-items: center; }
 
 .navegador__items__item {
   display: flex;
   justify-content: center; }
 
 .navegador__items__item--link {
-  font-size: 20px; }
+  font-size: 20px;
+  color: whitesmoke;
+  transition: opacity 0.2s; }
+  .navegador__items__item--link:hover {
+    opacity: 40%; }
 
 .navegador__items__item--logo {
   width: 60px;
-  height: auto; }
+  height: auto;
+  transition: transform .4s; }
+  .navegador__items__item--logo:hover {
+    transform: scale(1.1); }
   @media (min-width: 768px) {
+    .navegador__items__item--logo {
+      width: 70px; } }
+  @media (min-width: 1400px) {
     .navegador__items__item--logo {
       width: 85px; } }
 

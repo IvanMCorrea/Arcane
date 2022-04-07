@@ -5,7 +5,6 @@
 
 a{
     text-decoration: none;
-    color: whitesmoke;
 }
 .Background{
     background: $BackgroundColor;
@@ -13,11 +12,14 @@ a{
     min-width: 100vw;
 }
 .navegador{
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: $BackgroundNavColor;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .navegador__items{
     justify-content: center;
+    align-items: center;
 }
 .navegador__items__item{
     display: flex;
@@ -25,11 +27,16 @@ a{
 }
 .navegador__items__item--link{
     font-size: 20px;
+    @include Link;
 }
 .navegador__items__item--logo{
     width: 60px;
     height: auto;
+    @include Zoom;
     @media (min-width: 768px){
+        width: 70px;
+    }
+    @media (min-width: 1400px){
         width: 85px;
     }
 }
