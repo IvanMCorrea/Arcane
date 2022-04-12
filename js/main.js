@@ -1,3 +1,6 @@
+const usuarios = [];
+const productos = [];
+
 // Inicio Sesión
 class NewUser{
     constructor(user, pass){
@@ -32,5 +35,27 @@ function login(user,pass){
     }
 }
 const cuenta1 = newUsers();
+// Array que contiene usuario ingresado 
+usuarios.push(cuenta1);
+console.log(usuarios);
 console.log(cuenta1);
 login(cuenta1.user,cuenta1.pass);
+// Productos
+class Producto {
+    constructor(nombre,precio) {
+        this.nombre = nombre;
+        this.precio = precio
+    }
+}
+// Productos - Agregar Producto Nuevo
+const agregarProducto = () => {
+    let nombre = prompt("Ingrese nombre del producto");
+    let precio = parseInt(prompt("Ingrese el valor"));
+    let prod = new Producto(nombre,precio);
+    productos.push(prod);
+}
+productos.push(new Producto("Llavero Carapescado", 500));
+productos.push(new Producto("Poster Arcane", 500));
+productos.push(new Producto("Figura Jinx", 5000));
+productos.push(new Producto("Blu-Ray", 250));
+console.log(productos)
