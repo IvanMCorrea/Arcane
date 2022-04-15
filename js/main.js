@@ -1,5 +1,7 @@
 const usuarios = [];
 const productos = [];
+const carrito = [];
+let total = 0;
 
 // Inicio Sesión
 class NewUser{
@@ -8,6 +10,7 @@ class NewUser{
         this.pass = pass;
     }
 }
+//              - Agregar Usuario
 const newUsers = () => {
     alert("Cree cuenta nueva");
     let user = prompt("Ingrese nombre de usuario");
@@ -15,6 +18,8 @@ const newUsers = () => {
     alert("Cuenta nueva creada!");
     return new NewUser(user,pass);
 }
+
+//              - Iniciar sesión
 function login(user,pass){
     let intentos = 3;
     alert("Inicie Sesión");
@@ -40,19 +45,62 @@ usuarios.push(cuenta1);
 console.log(usuarios);
 console.log(cuenta1);
 login(cuenta1.user,cuenta1.pass);
+
 // Productos
 class Producto {
     constructor(nombre,precio) {
         this.nombre = nombre;
         this.precio = precio
     }
+//          - Descuento 10%
+    descuento10(){
+        if(this.precio >2000) {
+            this.precio = this.precio * 0.9;
+            return this.precio;
+        }
+    }
+//          - Detalle del producto
+    detalleProd() {
+        let resumen = `El nombre del producto es ${this.nombre} y el valor es $${this.precio}`;
+        return resumen;
+    };
 }
-// Productos - Agregar Producto Nuevo
+//          - Agregar Producto Nuevo
 const agregarProducto = () => {
     let nombre = prompt("Ingrese nombre del producto");
     let precio = parseInt(prompt("Ingrese el valor"));
     let prod = new Producto(nombre,precio);
     productos.push(prod);
+}
+//          - Eliminar Producto
+const eliminarProducto = (item) =>{
+    let index = productos.indexOf(item);
+    //si existe lo borra
+    if (index != -1) {
+        productos.splice(index, 1);
+    }
+}
+
+// Carrito
+//          - Agregar al Carrito
+const agregarCarrito = (item) =>{
+    let index = productos.indexOf(item);
+    //si existe lo agrega al carrito
+    if (index != -1) {
+        productos.push(productos[index]);
+    }
+}
+//          - Eliminar del Carrito
+const quitarCarrito = (item) =>{
+    let index = productos.indexOf(item);
+    //si existe lo elimina del carrito
+    if (index != -1) {
+        productos.splice(index,1);
+    }
+}
+//          - Total Carrito (en proceso)
+for (const prod of carrito){
+    total = total + parseInt(prod.precio);
 }
 productos.push(new Producto("Llavero Carapescado", 500));
 productos.push(new Producto("Poster Arcane", 500));
