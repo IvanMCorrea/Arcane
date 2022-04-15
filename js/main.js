@@ -87,15 +87,15 @@ const agregarCarrito = (item) =>{
     let index = productos.indexOf(item);
     //si existe lo agrega al carrito
     if (index != -1) {
-        productos.push(productos[index]);
+        carrito.push(productos[index]);
     }
 }
 //          - Eliminar del Carrito
 const quitarCarrito = (item) =>{
-    let index = productos.indexOf(item);
+    let index = carrito.indexOf(item);
     //si existe lo elimina del carrito
     if (index != -1) {
-        productos.splice(index,1);
+        carrito.splice(index,1);
     }
 }
 //          - Total Carrito (en proceso)
