@@ -81,7 +81,7 @@ const eliminarProducto = (item) =>{
     }
 }
 
-// Carrito
+// Carrito (en proceso)
 //          - Agregar al Carrito
 const agregarCarrito = (item) =>{
     let index = productos.indexOf(item);
@@ -98,7 +98,7 @@ const quitarCarrito = (item) =>{
         carrito.splice(index,1);
     }
 }
-//          - Total Carrito (en proceso)
+//          - Total Carrito
 for (const prod of carrito){
     total = total + parseInt(prod.precio);
 }
@@ -106,4 +106,18 @@ productos.push(new Producto("Llavero Carapescado", 500));
 productos.push(new Producto("Poster Arcane", 500));
 productos.push(new Producto("Figura Jinx", 5000));
 productos.push(new Producto("Blu-Ray", 250));
-console.log(productos)
+console.log(productos);
+
+// Contacto
+const datosRemitente = () => {
+    let remitente = document.getElementById("nombre").value;
+    remitente = remitente + document.getElementById("apellido").value;
+    let msj = document.getElementById("mensaje").value;
+    console.log(remitente);
+    console.log(msj);
+}
+const boton = document.querySelector("#btn");
+boton.addEventListener("click", ()=>{
+    datosRemitente(); 
+})
+

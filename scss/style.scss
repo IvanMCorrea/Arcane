@@ -11,6 +11,15 @@ video {
     width: 100%;
     height: 100%;
 }
+.translatey{
+    transform: translateY(0%);
+    @media (min-width: 1024px){
+        transform: translateY(-120%);
+    }
+    @media (min-width: 1400px){
+        transform: translateY(-140%);
+    }
+}
 .Background{
     background: $BackgroundColor;
     min-height: 100vh;
@@ -30,31 +39,6 @@ video {
     width: 100px;
     height: auto;
 }
-/* Video Landing */
-.video{
-    transform: translateY(-12%);
-}
-/* About Arcane */
-.about__text{
-    text-align: center;
-    color: map-get($map: $PaletaColores, $key: "Texto");
-}
-.about__text--title{
-    font-size: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 2%;
-    @media (min-width: 768px){
-        font-size: 3rem;
-    }
-}
-.about__text--paragraph{
-    font-size: 1.4rem;
-    line-height: 1.5;
-    font-family: 'Montserrat', sans-serif;
-    @media (min-width: 768px){
-        font-size: 2rem;
-    }
-}
 /* Nav */
 .navegador{
     padding-top: 1rem;
@@ -63,6 +47,9 @@ video {
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 100;
+    @media (min-width: 768px){
+        position: absolute;
+    }
 }
 .navegador__items{
     justify-content: center;
@@ -87,6 +74,68 @@ video {
         width: 85px;
     }
 }
+/* Video Landing */
+.video{
+    padding-top: -1rem;
+    @media (min-width: 768px){
+        padding-top: 4rem;
+    }
+}
+.video__links--text{
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: map-get($map: $PaletaColores, $key: "Texto");
+    @media (min-width: 768px){
+        font-size: 1.5rem;
+    }
+}
+.video__links--link{
+    display: flex;
+    justify-content: center;
+}
+.video__links--img{
+    width: 75px;
+    height: auto;
+    @include Zoom;
+    @media (min-width: 768px){
+        width: 90px;
+    }
+    @media (min-width: 1400px){
+        width: 100px;
+    }
+}
+/* Audio */
+.audio{
+    @include BordesRedondeados;
+    width: 100%;
+    height: 80%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border: none;
+}
+/* About Arcane */
+.about__text{
+    text-align: center;
+    color: map-get($map: $PaletaColores, $key: "Texto");
+}
+.about__text--title{
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 2%;
+    @media (min-width: 768px){
+        font-size: 3rem;
+    }
+}
+.about__text--paragraph{
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+    @media (min-width: 768px){
+        font-size: 2rem;
+    }
+}
 /* Proyectos */
 .proyectos{
     padding-top: 3rem;
@@ -95,13 +144,11 @@ video {
 .proyectos__cards{
     justify-content: center;
 }
-.proyectos__cards--card{
-    @include BordesRedondeados;
-    @include BordesSombreados;
-    width: 250px;
-    height: 150px;
-    background: whitesmoke;
+.proyectos__cards--img{
+    width: 460px;
+    height: 500px;
     margin: 2rem;
+    @include BordesRedondeados;
 }
 /* Footer */
 .footer{
@@ -122,4 +169,9 @@ video {
 .footer__items__item--link{
     font-size: 20px;
     @include Link;
+}
+/* Formulario */
+.formulario{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
 }

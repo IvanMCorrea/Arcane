@@ -29,12 +29,50 @@
                 <div class="navegador__items__item order-5 order-md-5 col-3 col-md-2 col-xl-1"><a href="#" class="navegador__items__item--link">Contact</a></div>
             </div>
         </nav>
-        <!-- Cards -->
-        <main class="">
+        <!-- Form -->
+        <main class="formulario">
+            <form>
+                <!-- Nombre -->
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" required>
+                <!-- Apellido -->
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" required>
+                <!-- Email -->
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <!-- Mensaje -->
+                <label for="mensaje">Message</label>
+                <textarea id="mensaje" cols="30" rows="1"></textarea>
+                <!-- Button -->
+                <button id="btn">Send</button>
+            </form>
         </main>
         <!-- Footer -->
-        <footer class="footer">
-            
+        <footer class="footer container-fluid">
+            <div class="footer__items row row-cols-3">
+                <!-- Columna 1 -->
+                <div class="col">
+                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Home</a></div>
+                    <div class="footer__items__item"><a href="watch.html" class="footer__items__item--link">Watch</a></div>
+                    <div class="footer__items__item"><a href="shop.html" class="footer__items__item--link">Shop</a></div>
+                    <div class="footer__items__item"><a href="contact.html" class="footer__items__item--link">Contact</a></div>
+                </div>
+                <!-- Columna 2 -->
+                <div class="col">
+                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Home</a></div>
+                    <div class="footer__items__item"><a href="watch.html" class="footer__items__item--link">Watch</a></div>
+                    <div class="footer__items__item"><a href="shop.html" class="footer__items__item--link">Shop</a></div>
+                    <div class="footer__items__item"><a href="contact.html" class="footer__items__item--link">Contact</a></div>
+                </div>
+                <!-- Columna 3 -->
+                <div class="col">
+                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Home</a></div>
+                    <div class="footer__items__item"><a href="watch.html" class="footer__items__item--link">Watch</a></div>
+                    <div class="footer__items__item"><a href="shop.html" class="footer__items__item--link">Shop</a></div>
+                    <div class="footer__items__item"><a href="contact.html" class="footer__items__item--link">Contact</a></div>
+                </div>
+            </div>
         </footer>
     </div>
     <script src="js/main.js"></script>
