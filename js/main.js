@@ -80,6 +80,19 @@ const eliminarProducto = (item) =>{
         productos.splice(index, 1);
     }
 }
+//          - Crear Producto desde Panel
+const agregarProductoPanel = () => {
+    let nombre = document.getElementById("producto").value;
+    let precio = parseInt(document.getElementById("valor").value);
+    let prod = new Producto(nombre,precio);
+    productos.push(prod);
+    console.log(productos);
+}
+const crearProdAdmin = document.querySelector("#btnCrearProducto");
+crearProdAdmin.addEventListener("click", (e)=>{
+    e.preventDefault();
+    agregarProductoPanel();
+})
 
 // Carrito (en proceso)
 //          - Agregar al Carrito
