@@ -39,12 +39,18 @@ function login(user,pass){
         console.log("Acceso denegado");
     }
 }
-const cuenta1 = newUsers();
-// Array que contiene usuario ingresado 
-usuarios.push(cuenta1);
-console.log(usuarios);
-console.log(cuenta1);
-login(cuenta1.user,cuenta1.pass);
+// Llamar función para Agregar Usuarios mediante link
+let crearCuenta = document.querySelector("#cuentaNueva");
+crearCuenta.addEventListener("click", ()=>{
+    const cuenta1 = newUsers();
+    usuarios.push(cuenta1);
+    console.log(usuarios);
+})
+// Llamar función para Iniciar Sesión mediante link
+let ingresarCuenta = document.querySelector("#ingresarCuenta");
+ingresarCuenta.addEventListener("click", ()=>{
+    login(usuarios[0].user,usuarios[0].pass);
+})
 
 // Productos
 class Producto {

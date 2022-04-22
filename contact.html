@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/bootstrap-grid.rtl.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="img/A_arcane.png" type="image/x-icon">
-    <title>Arcane World</title>
+    <title>Arcane Contact</title>
 </head>
 <body>
     <div class="Background d-flex flex-column">
@@ -21,7 +21,7 @@
         <nav class="navegador container-fluid">
             <div class="navegador__items row row-cols-5">
                 <!-- Item Principal -->
-                <div class="navegador__items__item order-1 order-md-3 col-12 col-md-3 col-xl-2 pb-3 pb-md-0"><img src="img/A_arcane.png" alt="" class="navegador__items__item--logo"></div>
+                <div class="navegador__items__item order-1 order-md-3 col-12 col-md-3 col-xl-2 pb-3 pb-md-0"><a href="index.html"><img src="img/A_arcane.png" alt="A-Arcane" class="navegador__items__item--logo"></a></div>
                 <!-- Items Secundarios -->
                 <div class="navegador__items__item order-2 order-md-1 col-3 col-md-2 col-xl-1"><a href="index.html" class="navegador__items__item--link">Home</a></div>
                 <div class="navegador__items__item order-3 order-md-2 col-3 col-md-2 col-xl-1"><a href="watch.html" class="navegador__items__item--link">Watch</a></div>
@@ -30,47 +30,48 @@
             </div>
         </nav>
         <!-- Form -->
-        <main class="formulario">
-            <form>
+        <main class="container-fluid">
+            <form class="formulario row">
                 <!-- Nombre -->
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" required>
+                <div class="col-12">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
                 <!-- Apellido -->
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" required>
+                <div class="col-12">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" required>
+                </div>
                 <!-- Email -->
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
+                <div class="col-12">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
                 <!-- Mensaje -->
-                <label for="mensaje">Message</label>
-                <textarea id="mensaje" cols="30" rows="1"></textarea>
+                <div class="col-12">
+                    <label for="mensaje">Message</label>
+                    <textarea id="mensaje" cols="30" rows="1"></textarea>
+                </div>
                 <!-- Button -->
-                <button id="btn">Send</button>
+                <div class="col-4">
+                    <button id="btn">Send</button>
+                </div>
             </form>
         </main>
         <!-- Footer -->
         <footer class="footer container-fluid">
-            <div class="footer__items row row-cols-3">
+            <div class="footer__items row row-cols-4">
                 <!-- Columna 1 -->
                 <div class="col">
-                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Home</a></div>
+                    <div class="footer__items__item"><a href="index.html" class="footer__items__item--link">Home</a></div>
                     <div class="footer__items__item"><a href="watch.html" class="footer__items__item--link">Watch</a></div>
                     <div class="footer__items__item"><a href="shop.html" class="footer__items__item--link">Shop</a></div>
-                    <div class="footer__items__item"><a href="contact.html" class="footer__items__item--link">Contact</a></div>
+                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Contact</a></div>
                 </div>
                 <!-- Columna 2 -->
                 <div class="col">
-                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Home</a></div>
-                    <div class="footer__items__item"><a href="watch.html" class="footer__items__item--link">Watch</a></div>
-                    <div class="footer__items__item"><a href="shop.html" class="footer__items__item--link">Shop</a></div>
-                    <div class="footer__items__item"><a href="contact.html" class="footer__items__item--link">Contact</a></div>
-                </div>
-                <!-- Columna 3 -->
-                <div class="col">
-                    <div class="footer__items__item"><a href="#" class="footer__items__item--link">Home</a></div>
-                    <div class="footer__items__item"><a href="watch.html" class="footer__items__item--link">Watch</a></div>
-                    <div class="footer__items__item"><a href="shop.html" class="footer__items__item--link">Shop</a></div>
-                    <div class="footer__items__item"><a href="contact.html" class="footer__items__item--link">Contact</a></div>
+                    <div class="footer__items__item"><a href="#" class="footer__items__item--link" id="cuentaNueva">New account</a></div>
+                    <div class="footer__items__item"><a href="#" class="footer__items__item--link" id="ingresarCuenta">Login</a></div>
                 </div>
             </div>
         </footer>
