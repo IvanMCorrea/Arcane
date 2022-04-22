@@ -2,7 +2,7 @@ const usuarios = [];
 const productos = [];
 const carrito = [];
 let total = 0;
-
+productos = JSON.parse(localStorage.getItem("productos")) || [];
 // Inicio Sesión
 class NewUser{
     constructor(user, pass){
@@ -56,7 +56,7 @@ ingresarCuenta.addEventListener("click", ()=>{
 class Producto {
     constructor(nombre,precio) {
         this.nombre = nombre;
-        this.precio = precio
+        this.precio = precio;
     }
 //          - Descuento 10%
     descuento10(){
@@ -77,6 +77,7 @@ const agregarProducto = () => {
     let precio = parseInt(prompt("Ingrese el valor"));
     let prod = new Producto(nombre,precio);
     productos.push(prod);
+    localStorage.setItem("productos",JSON.stringify(productos));
 }
 //          - Eliminar Producto
 const eliminarProducto = (item) =>{
@@ -84,22 +85,9 @@ const eliminarProducto = (item) =>{
     //si existe lo borra
     if (index != -1) {
         productos.splice(index, 1);
+        localStorage.setItem("productos",JSON.stringify(productos));
     }
 }
-//          - Crear Producto desde Panel
-const agregarProductoPanel = () => {
-    let nombre = document.getElementById("producto").value;
-    let precio = parseInt(document.getElementById("valor").value);
-    let prod = new Producto(nombre,precio);
-    productos.push(prod);
-    console.log(productos);
-}
-const crearProdAdmin = document.querySelector("#btnCrearProducto");
-crearProdAdmin.addEventListener("click", (e)=>{
-    e.preventDefault();
-    agregarProductoPanel();
-})
-
 // Carrito (en proceso)
 //          - Agregar al Carrito
 const agregarCarrito = (item) =>{
@@ -121,22 +109,8 @@ const quitarCarrito = (item) =>{
 for (const prod of carrito){
     total = total + parseInt(prod.precio);
 }
-productos.push(new Producto("Llavero Carapescado", 500));
-productos.push(new Producto("Poster Arcane", 500));
-productos.push(new Producto("Figura Jinx", 5000));
-productos.push(new Producto("Blu-Ray", 250));
+localStorage.setItem("productos",JSON.stringify(productos));
 console.log(productos);
 
-// Contacto
-const datosRemitente = () => {
-    let remitente = document.getElementById("nombre").value;
-    remitente = remitente + document.getElementById("apellido").value;
-    let msj = document.getElementById("mensaje").value;
-    console.log(remitente);
-    console.log(msj);
-}
-const boton = document.querySelector("#btn");
-boton.addEventListener("click", ()=>{
-    datosRemitente(); 
-})
-
+// Exportar
+export { Producto };
