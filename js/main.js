@@ -2,7 +2,6 @@ const usuarios = [];
 const productos = [];
 const carrito = [];
 let total = 0;
-productos = JSON.parse(localStorage.getItem("productos")) || [];
 // Inicio Sesión
 class NewUser{
     constructor(user, pass){
@@ -41,22 +40,25 @@ function login(user,pass){
 }
 // Llamar función para Agregar Usuarios mediante link
 let crearCuenta = document.querySelector("#cuentaNueva");
-crearCuenta.addEventListener("click", ()=>{
+crearCuenta.addEventListener("click", (e)=>{
+    e.preventDefault();
     const cuenta1 = newUsers();
     usuarios.push(cuenta1);
     console.log(usuarios);
 })
 // Llamar función para Iniciar Sesión mediante link
 let ingresarCuenta = document.querySelector("#ingresarCuenta");
-ingresarCuenta.addEventListener("click", ()=>{
+ingresarCuenta.addEventListener("click", (e)=>{
+    e.preventDefault();
     login(usuarios[0].user,usuarios[0].pass);
 })
 
 // Productos
 class Producto {
-    constructor(nombre,precio) {
+    constructor(nombre,precio, img) {
         this.nombre = nombre;
         this.precio = precio;
+        this.img = img;
     }
 //          - Descuento 10%
     descuento10(){
@@ -75,7 +77,8 @@ class Producto {
 const agregarProducto = () => {
     let nombre = prompt("Ingrese nombre del producto");
     let precio = parseInt(prompt("Ingrese el valor"));
-    let prod = new Producto(nombre,precio);
+    let img = prompt("Ingrese ruta de imagen");
+    let prod = new Producto(nombre,precio,img);
     productos.push(prod);
     localStorage.setItem("productos",JSON.stringify(productos));
 }
@@ -88,6 +91,25 @@ const eliminarProducto = (item) =>{
         localStorage.setItem("productos",JSON.stringify(productos));
     }
 }
+// Crear Producto desde Panel
+const agregarProductoPanel = () => {
+    let nombre = document.getElementById("producto").value;
+    let precio = parseInt(document.getElementById("valor").value);
+    let ruta = document.getElementById("rutaImg").value;
+    let prod = new Producto(nombre,precio,ruta);
+    let prods = JSON.parse(localStorage.getItem("productos"));
+    prods.push(prod);
+    console.log(productos);
+    localStorage.setItem("productos",JSON.stringify(prods));
+}
+const crearProdAdmin = document.querySelector("#btnCrearProducto");
+if (crearProdAdmin !== null){
+    crearProdAdmin.addEventListener("click", (e)=>{
+        e.preventDefault();
+        agregarProductoPanel();
+    });
+}
+
 // Carrito (en proceso)
 //          - Agregar al Carrito
 const agregarCarrito = (item) =>{
@@ -109,8 +131,4 @@ const quitarCarrito = (item) =>{
 for (const prod of carrito){
     total = total + parseInt(prod.precio);
 }
-localStorage.setItem("productos",JSON.stringify(productos));
 console.log(productos);
-
-// Exportar
-export { Producto };
