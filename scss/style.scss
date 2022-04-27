@@ -198,6 +198,18 @@ video {
 .formulario{
     margin-top: 10rem;
     margin-bottom: 10rem;
+    display: flex;
+    justify-content: center;
+}
+.formulario__innerForm{
+    padding: 10%;
+    width: 50%;
+    height: auto;
     justify-content: center;
     text-align: center;
+    background-color: beige;
+    @include BordesRedondeados;
+}
+.formulario__innerForm__input{
+    @include BordesRedondeados;
 }

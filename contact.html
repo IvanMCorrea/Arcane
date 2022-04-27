@@ -30,27 +30,29 @@
             </div>
         </nav>
         <!-- Form -->
-        <main class="container-fluid">
-            <form class="formulario row">
+        <main class="formulario container-fluid">
+            <form class="formulario__innerForm row">
                 <!-- Nombre -->
-                <div class="col-12">
+                <div class="col-12 pb-2">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" required>
+                    <input type="text" id="nombre" class="formulario__innerForm__input" required>
                 </div>
                 <!-- Apellido -->
-                <div class="col-12">
+                <div class="col-12 pb-2">
                     <label for="apellido">Apellido</label>
-                    <input type="text" id="apellido" required>
+                    <input type="text" id="apellido" class="formulario__innerForm__input" required>
                 </div>
                 <!-- Email -->
-                <div class="col-12">
+                <div class="col-12 pb-2">
                     <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" class="formulario__innerForm__input" required>
                 </div>
                 <!-- Mensaje -->
-                <div class="col-12">
+                <div class="col-12 pb-2">
                     <label for="mensaje">Message</label>
-                    <textarea id="mensaje" cols="30" rows="1"></textarea>
+                </div>
+                <div>
+                    <textarea id="mensaje" cols="30" rows="3" class="formulario__innerForm__input"></textarea>
                 </div>
                 <!-- Button -->
                 <div class="col-4">
