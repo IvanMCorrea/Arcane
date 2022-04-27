@@ -97,9 +97,9 @@ const agregarProductoPanel = () => {
     let precio = parseInt(document.getElementById("valor").value);
     let ruta = document.getElementById("rutaImg").value;
     let prod = new Producto(nombre,precio,ruta);
-    let prods = JSON.parse(localStorage.getItem("productos"));
+    let prods = JSON.parse(localStorage.getItem("productos")) || [];
     prods.push(prod);
-    console.log(productos);
+    console.log(prods);
     localStorage.setItem("productos",JSON.stringify(prods));
 }
 const crearProdAdmin = document.querySelector("#btnCrearProducto");

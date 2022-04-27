@@ -152,7 +152,7 @@ video {
 
 /* Proyectos */
 .proyectos {
-  padding-top: 15rem;
+  padding-top: 5rem;
   padding-bottom: 3rem; }
 
 .proyectos__cards {
@@ -162,6 +162,31 @@ video {
   width: 460px;
   height: 500px;
   margin: 2rem;
+  border-radius: 2.5rem; }
+
+/* Productos */
+.productos {
+  padding-top: 15rem;
+  padding-bottom: 3rem; }
+
+.productos__cards {
+  justify-content: center; }
+
+.productos__cards--card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 2.5rem;
+  background-color: beige; }
+
+.productos__cards--text {
+  margin: 0.5rem; }
+
+.productos__cards--img {
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
   border-radius: 2.5rem; }
 
 /* Footer */
