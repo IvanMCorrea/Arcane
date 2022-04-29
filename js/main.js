@@ -15,15 +15,38 @@ const newUsers = () => {
     let user = prompt("Ingrese nombre de usuario");
     let pass = prompt("Ingrese contraseña");
     alert("Cuenta nueva creada!");
-    return new NewUser(user,pass);
+    let user1 = new NewUser(user,pass);
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    listaUsuarios.push(user1);
+    localStorage.setItem("usuarios",JSON.stringify(listaUsuarios));
+    console.log(listaUsuarios);
 }
 
 //              - Iniciar sesión
-function login(user,pass){
+function login(){
     let intentos = 3;
     alert("Inicie Sesión");
     let field1 = prompt("Ingrese nombre de usuario");
     let field2 = prompt("Ingrese contraseña");
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let user = listaUsuarios[0].user;
+    let pass = listaUsuarios[0].pass;
+    /*  Utilizar LocalStorage para ingresar (En proceso) 
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    while (intentos > 0 ) {
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if (field1 == listaUsuarios[i.user] && field2 == listaUsuarios[i.pass]) {
+                alert("Bienvenido/a");
+                console.log("Bienvenido/a");
+                intentos = 0;
+            }else{
+                alert(`Datos incorrectos, le quedan ${intentos} intentos`);
+                field1 = prompt("Ingrese nombre de usuario");
+                field2 = prompt("Ingrese contraseña");
+                intentos--;
+            }
+        }
+    } */
     while (((field1 != user) || (field2 != pass)) && intentos > 0 ) {
         alert(`Datos incorrectos, le quedan ${intentos} intentos`);
         field1 = prompt("Ingrese nombre de usuario");
@@ -42,15 +65,13 @@ function login(user,pass){
 let crearCuenta = document.querySelector("#cuentaNueva");
 crearCuenta.addEventListener("click", (e)=>{
     e.preventDefault();
-    const cuenta1 = newUsers();
-    usuarios.push(cuenta1);
-    console.log(usuarios);
+    newUsers();
 })
 // Llamar función para Iniciar Sesión mediante link
 let ingresarCuenta = document.querySelector("#ingresarCuenta");
 ingresarCuenta.addEventListener("click", (e)=>{
     e.preventDefault();
-    login(usuarios[0].user,usuarios[0].pass);
+    login();
 })
 
 // Productos
