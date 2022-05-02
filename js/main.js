@@ -1,7 +1,4 @@
-const usuarios = [];
-const productos = [];
 const carrito = [];
-let total = 0;
 // Inicio Sesión
 class NewUser{
     constructor(user, pass){
@@ -76,10 +73,12 @@ ingresarCuenta.addEventListener("click", (e)=>{
 
 // Productos
 class Producto {
-    constructor(nombre,precio, img) {
+    constructor(id,nombre,precio,img,stock) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.img = img;
+        this.stock = stock;
     }
 //          - Descuento 10%
     descuento10(){
@@ -96,15 +95,19 @@ class Producto {
 }
 //          - Agregar Producto Nuevo
 const agregarProducto = () => {
+    let productos = JSON.parse(localStorage.getItem("productos")) || [];
+    let id = prompt("Ingrese id del producto");
     let nombre = prompt("Ingrese nombre del producto");
     let precio = parseInt(prompt("Ingrese el valor"));
     let img = prompt("Ingrese ruta de imagen");
-    let prod = new Producto(nombre,precio,img);
+    let stock = 0;
+    let prod = new Producto(id,nombre,precio,img,stock);
     productos.push(prod);
     localStorage.setItem("productos",JSON.stringify(productos));
 }
 //          - Eliminar Producto
 const eliminarProducto = (item) =>{
+    let productos = JSON.parse(localStorage.getItem("productos")) || [];
     let index = productos.indexOf(item);
     //si existe lo borra
     if (index != -1) {
@@ -114,10 +117,12 @@ const eliminarProducto = (item) =>{
 }
 // Crear Producto desde Panel
 const agregarProductoPanel = () => {
+    let id = parseInt(document.getElementById("id").value);
     let nombre = document.getElementById("producto").value;
     let precio = parseInt(document.getElementById("valor").value);
     let ruta = document.getElementById("rutaImg").value;
-    let prod = new Producto(nombre,precio,ruta);
+    let stock = parseInt(document.getElementById("stock").value);
+    let prod = new Producto(id,nombre,precio,ruta,stock);
     let prods = JSON.parse(localStorage.getItem("productos")) || [];
     prods.push(prod);
     console.log(prods);
@@ -128,28 +133,13 @@ if (crearProdAdmin !== null){
     crearProdAdmin.addEventListener("click", (e)=>{
         e.preventDefault();
         agregarProductoPanel();
+        location.reload();
     });
 }
 
 // Carrito (en proceso)
 //          - Agregar al Carrito
-const agregarCarrito = (item) =>{
-    let index = productos.indexOf(item);
-    //si existe lo agrega al carrito
-    if (index != -1) {
-        carrito.push(productos[index]);
-    }
-}
+
 //          - Eliminar del Carrito
-const quitarCarrito = (item) =>{
-    let index = carrito.indexOf(item);
-    //si existe lo elimina del carrito
-    if (index != -1) {
-        carrito.splice(index,1);
-    }
-}
+
 //          - Total Carrito
-for (const prod of carrito){
-    total = total + parseInt(prod.precio);
-}
-console.log(productos);

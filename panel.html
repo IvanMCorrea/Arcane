@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap-grid.rtl.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="img/A_arcane.png" type="image/x-icon">
@@ -32,6 +32,9 @@
         <!-- Form -->
         <main class="formulario">
             <form>
+                <!-- ID de Producto -->
+                <label for="id">ID</label>
+                <input type="number" id="id" required>
                 <!-- Nombre de Producto -->
                 <label for="producto">Producto</label>
                 <input type="text" id="producto" required>
@@ -41,19 +44,27 @@
                 <!-- Ruta de Imagen -->
                 <label for="rutaImg">Ruta de Imagen</label>
                 <input type="text" id="rutaImg" required>
+                <!-- Stock -->
+                <label for="stock">Cantidad</label>
+                <input type="number" id="stock" required>
                 <!-- Button -->
                 <button id="btnCrearProducto">Send</button>
             </form>
         </main>
         <!-- Lista Productos -->
-        <table id="tabla">
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Ruta</th>
-                <th>Borrar</th>
-            </tr>
-        </table>
+        <section class="lista">
+            <table class="container" id="tabla">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Ruta</th>
+                    <th>Cantidad</th>
+                    <th>Borrar</th>
+                    <th>Restar/Agregar Stock</th>
+                </tr>
+            </table>
+        </section>
         <!-- Footer -->
         <footer class="footer container-fluid">
             <div class="footer__items row row-cols-4">

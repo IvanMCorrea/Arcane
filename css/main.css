@@ -18,6 +18,9 @@ video {
   width: 100%;
   height: 100%; }
 
+td {
+  text-align: center; }
+
 .translatey {
   transform: translateY(0%); }
   @media (min-width: 1024px) {
@@ -229,3 +232,13 @@ video {
 
 .formulario__innerForm__input {
   border-radius: 2.5rem; }
+
+/* Panel */
+#tabla {
+  background-color: white;
+  margin: 2rem;
+  align-items: center; }
+
+.lista {
+  display: flex;
+  justify-content: center; }
