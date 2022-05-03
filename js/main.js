@@ -1,9 +1,9 @@
-const carrito = [];
 // Inicio Sesión
 class NewUser{
-    constructor(user, pass){
+    constructor(user, pass, carrito){
         this.user = user;
         this.pass = pass;
+        this.carrito = carrito;
     }
 }
 //              - Agregar Usuario
@@ -12,50 +12,38 @@ const newUsers = () => {
     let user = prompt("Ingrese nombre de usuario");
     let pass = prompt("Ingrese contraseña");
     alert("Cuenta nueva creada!");
-    let user1 = new NewUser(user,pass);
+    let carrito = [];
+    let user1 = new NewUser(user,pass,carrito);
     let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     listaUsuarios.push(user1);
     localStorage.setItem("usuarios",JSON.stringify(listaUsuarios));
     console.log(listaUsuarios);
 }
-
 //              - Iniciar sesión
 function login(){
     let intentos = 3;
+    let ingreso = false;
     alert("Inicie Sesión");
     let field1 = prompt("Ingrese nombre de usuario");
     let field2 = prompt("Ingrese contraseña");
     let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    let user = listaUsuarios[0].user;
-    let pass = listaUsuarios[0].pass;
-    /*  Utilizar LocalStorage para ingresar (En proceso) 
-    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    /*  Utilizar LocalStorage para ingresar (En proceso)  */
     while (intentos > 0 ) {
         for (let i = 0; i < listaUsuarios.length; i++) {
-            if (field1 == listaUsuarios[i.user] && field2 == listaUsuarios[i.pass]) {
-                alert("Bienvenido/a");
-                console.log("Bienvenido/a");
-                intentos = 0;
-            }else{
-                alert(`Datos incorrectos, le quedan ${intentos} intentos`);
-                field1 = prompt("Ingrese nombre de usuario");
-                field2 = prompt("Ingrese contraseña");
-                intentos--;
+            if (field1 == listaUsuarios[i].user && field2 == listaUsuarios[i].pass) {
+                ingreso = true;
             }
         }
-    } */
-    while (((field1 != user) || (field2 != pass)) && intentos > 0 ) {
-        alert(`Datos incorrectos, le quedan ${intentos} intentos`);
-        field1 = prompt("Ingrese nombre de usuario");
-        field2 = prompt("Ingrese contraseña");
-        intentos--;
-    }
-    if (intentos > 0) {
-        alert("Bienvenido/a");
-        console.log("Bienvenido/a");
-    }else{
-        alert("Acceso denegado");
-        console.log("Acceso denegado");
+        if(ingreso == true){
+            alert("Bienvenido/a");
+            console.log("Bienvenido/a");
+            intentos = 0;
+        }else{
+            alert(`Datos incorrectos, le quedan ${intentos} intentos`);
+            field1 = prompt("Ingrese nombre de usuario");
+            field2 = prompt("Ingrese contraseña");
+            intentos--;
+        }
     }
 }
 // Llamar función para Agregar Usuarios mediante link
@@ -93,9 +81,21 @@ class Producto {
         return resumen;
     };
 }
+// Console log lista productos
+const listaProductos = () => {
+    let listaProductos = JSON.parse(localStorage.getItem("productos")) || [];
+    for (const {nombre: n, precio: p} of listaProductos) {
+        console.log(`Nombre de Producto: ${n}, Precio: $${p}`);
+    }
+}
+// Copiar arreglo
+const copiarArreglo = (array) => {
+    let copia = [...array];
+    return copia;
+}
 // Ordenar lista
 const ordenarLista = () =>{
-    let lista = verificarStorage();
+    let lista = JSON.parse(localStorage.getItem("productos")) || [];
     lista.sort(((a, b) => a.id - b.id));
     console.log(lista)
     localStorage.setItem("productos", JSON.stringify(lista));
