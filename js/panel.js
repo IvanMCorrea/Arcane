@@ -1,3 +1,4 @@
+/* Verifica si hay productos en el Storage */
 const verificarStorage = () => {
     let lista = [];
     if(localStorage.getItem("productos") != null) {
@@ -12,6 +13,7 @@ const eliminarProductoPanel = (id) =>{
     localStorage.setItem("productos", JSON.stringify(listaFiltrada));
     location.reload();
 }
+/* Agrega Stock al elemento seleccionado desde la lista de Panel */
 const agregarStockPanel = (id) =>{
     const listaModificada = verificarStorage();
     let index = listaModificada.findIndex(obj => obj.id === id);
@@ -24,6 +26,7 @@ const agregarStockPanel = (id) =>{
     localStorage.setItem("productos", JSON.stringify(listaModificada));
     location.reload();
 }
+/* Resta Stock al elemento seleccionado desde la lista de Panel */
 const restarStockPanel = (id) =>{
     const listaModificada = verificarStorage();
     let index = listaModificada.findIndex(obj => obj.id === id);
@@ -38,6 +41,7 @@ const restarStockPanel = (id) =>{
     localStorage.setItem("productos", JSON.stringify(listaModificada));
     location.reload();
 }
+/* Muestra una lista con los productos cargados al LocalStorage */
 const imprimirDatos = () => {
     if (verificarStorage() != undefined) {
         /*  */

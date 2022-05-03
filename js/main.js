@@ -93,6 +93,13 @@ class Producto {
         return resumen;
     };
 }
+// Ordenar lista
+const ordenarLista = () =>{
+    let lista = verificarStorage();
+    lista.sort(((a, b) => a.id - b.id));
+    console.log(lista)
+    localStorage.setItem("productos", JSON.stringify(lista));
+}
 //          - Agregar Producto Nuevo
 const agregarProducto = () => {
     let productos = JSON.parse(localStorage.getItem("productos")) || [];
@@ -104,6 +111,7 @@ const agregarProducto = () => {
     let prod = new Producto(id,nombre,precio,img,stock);
     productos.push(prod);
     localStorage.setItem("productos",JSON.stringify(productos));
+    ordenarLista();
 }
 //          - Eliminar Producto
 const eliminarProducto = (item) =>{
@@ -127,6 +135,7 @@ const agregarProductoPanel = () => {
     prods.push(prod);
     console.log(prods);
     localStorage.setItem("productos",JSON.stringify(prods));
+    ordenarLista();
 }
 const crearProdAdmin = document.querySelector("#btnCrearProducto");
 if (crearProdAdmin !== null){
