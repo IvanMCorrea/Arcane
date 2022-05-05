@@ -1,3 +1,4 @@
+
 // Inicio Sesión
 class NewUser{
     constructor(user, pass, carrito){
@@ -56,7 +57,44 @@ crearCuenta.addEventListener("click", (e)=>{
 let ingresarCuenta = document.querySelector("#ingresarCuenta");
 ingresarCuenta.addEventListener("click", (e)=>{
     e.preventDefault();
-    login();
+    //login();
+    Swal.fire({
+        title: 'Login Form',
+        html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+        <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+        confirmButtonText: 'Sign in',
+        focusConfirm: false,
+        preConfirm: () => {
+            const login = Swal.getPopup().querySelector('#login').value
+            const password = Swal.getPopup().querySelector('#password').value
+            if (!login || !password) {
+                Swal.showValidationMessage(`Please enter login and password`)
+            }
+            return { login: login, password: password }
+        }
+    })
+        .then((result) => {
+            let login = result.value.login;
+            let password = result.value.password;
+            let intentos = 3;
+            let ingreso = false;
+            let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            if (!login || !password) {
+                Swal.showValidationMessage(`Please enter login and password`)
+            }else{
+                for (let i = 0; i < listaUsuarios.length; i++) {
+                    if (login == listaUsuarios[i].user && password == listaUsuarios[i].pass) {
+                        ingreso = true;
+                    }
+                }
+                if(ingreso == true){
+                    console.log("Bienvenido/a");
+                    intentos = 0;
+                }else{
+                    console.log(`Datos incorrectos`);
+                }
+            }
+        })
 })
 
 // Productos
