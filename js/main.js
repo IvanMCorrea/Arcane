@@ -1,4 +1,3 @@
-
 // Inicio Sesión
 class NewUser{
     constructor(user, pass, carrito){

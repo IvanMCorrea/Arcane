@@ -29,6 +29,25 @@
                 <div class="navegador__items__item order-5 order-md-5 col-3 col-md-2 col-xl-1"><a href="contact.html" class="navegador__items__item--link">Contact</a></div>
             </div>
         </nav>
+        <!-- Carrito -->
+        <a class="cart-btn">
+            <img src="img/Carrito.svg" alt="carrito compras" class="carrito">
+            <span class ="cart-quantity">0</span>
+        </a>
+        <!--  Carrito modal  -->
+        <aside class="carrito__overlay">
+            <div class="carrito__modal">
+                <a id="close-btn"><img src="img/close.svg" class="carrito__modal--close"></a>
+                <h1 class="cart-is-empty">The cart is empty</h1>
+                <div class="product-rows">
+                </div>
+                <div class="total">
+                <h1 class="cart-total">TOTAL</h1>
+                <span class="total-price">$0</span>
+                <button class="purchase-btn">COMPRAR</button>
+                </div>
+            </div>
+        </aside>
         <!-- Cards -->
         <main class="productos container-fluid">
             <div class="productos__cards row row-cols-1 row-cols-md-4" id="cards">
