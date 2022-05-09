@@ -1,4 +1,3 @@
-
 // Inicio Sesión
 class NewUser{
     constructor(user, pass, carrito){
@@ -183,7 +182,24 @@ if (crearProdAdmin !== null){
         location.reload();
     });
 }
+// Fetch inventario
+const database = "inventario.json"
+const obtenerDatos = async ()=>{
+    try{
+        let datos = await fetch(database);
+        let response = await datos.json();
+        let listaProductos = JSON.parse(localStorage.getItem("productos")) || [];
+        if(listaProductos = []){
+            listaProductos = response;
+            localStorage.setItem("productos",JSON.stringify(listaProductos));
+        }
+    } catch(error){
+        console.log(error);
+    }
+}
+// Enviar nuevos datos al inventario
 
+obtenerDatos()
 // Carrito (en proceso)
 //          - Agregar al Carrito
 
