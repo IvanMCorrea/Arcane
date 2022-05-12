@@ -8,7 +8,7 @@ prods.forEach(el => {
         <div class="productos__cards--text">
             <h3>${el.nombre}</h3>
             <p class="product-price">$${el.precio}</p>
-            <button class="addToCart">Add to Cart</button>
+            <button class="addToCart btn-ppal">Add to Cart</button>
         </div>
     `
     nodo.className = "productos__cards--card col";
@@ -21,6 +21,7 @@ const carritoOverlay = document.querySelector(".carrito__overlay");
 const closeBtn = document.querySelector("#close-btn");
 const addToCart = document.getElementsByClassName("addToCart");
 const productRows = document.getElementsByClassName("product-row");
+const cantidadProds = document.querySelector(".cart-quantity");
 /* Evento abrir y cerrar carrito desde imagen carrito */
 carrito.addEventListener("click", ()=>{
     if(carritoOverlay.classList.contains("open")){
@@ -69,10 +70,10 @@ function agregarElem(prodId, prodName, price, imageSrc){
     let cartRowItem = `
         <div class="product-row" id="${prodId}">
             <img class="carrito__modal__item--img" src="${imageSrc}">
-            <span>${prodName}</span>
-            <span class="cart-price">${price}</span>
-            <input class="product-quantity" type="number" value="1">
-            <button class="remove-btn">Borrar</button>
+            <span class="carrito__modal__item--text">${prodName}</span>
+            <span class="cart-price carrito__modal__item--price">${price}</span>
+            <input class="carrito__modal__item--cantidad product-quantity" type="number" value="1" min="1">
+            <button class="carrito__modal__item--borrar remove-btn">Borrar</button>
         </div>
     `
     productRow.innerHTML = cartRowItem;
@@ -106,4 +107,10 @@ function updatePrice() {
     }
     document.querySelector(".total-price").innerText = "$" + total;
     document.querySelector(".cart-quantity").textContent = productRows.length;
+    if ((productRows.length > 0)){
+        cantidadProds.classList.remove("hidden");
+    }else{
+        cantidadProds.classList.add("hidden");
+    }
 }
+updatePrice()

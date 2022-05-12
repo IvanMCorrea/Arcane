@@ -56,7 +56,7 @@ crearCuenta.addEventListener("click", (e)=>{
 let ingresarCuenta = document.querySelector("#ingresarCuenta");
 ingresarCuenta.addEventListener("click", (e)=>{
     e.preventDefault();
-    //login();
+/*     //login();
     Swal.fire({
         title: 'Login Form',
         html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
@@ -64,10 +64,10 @@ ingresarCuenta.addEventListener("click", (e)=>{
         confirmButtonText: 'Sign in',
         focusConfirm: false,
         preConfirm: () => {
-            const login = Swal.getPopup().querySelector('#login').value
-            const password = Swal.getPopup().querySelector('#password').value
+            const login = document.querySelector('#login').value
+            const password = document.querySelector('#password').value
             if (!login || !password) {
-                Swal.showValidationMessage(`Please enter login and password`)
+                showValidationMessage(`Please enter login and password`)
             }
             return { login: login, password: password }
         }
@@ -79,7 +79,7 @@ ingresarCuenta.addEventListener("click", (e)=>{
             let ingreso = false;
             let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
             if (!login || !password) {
-                Swal.showValidationMessage(`Please enter login and password`)
+                showValidationMessage(`Please enter login and password`)
             }else{
                 for (let i = 0; i < listaUsuarios.length; i++) {
                     if (login == listaUsuarios[i].user && password == listaUsuarios[i].pass) {
@@ -94,8 +94,47 @@ ingresarCuenta.addEventListener("click", (e)=>{
                 }
             }
         })
+}) */
+    (async () => {
+        const { value: formValues } = await Swal.fire({
+            title: 'Multiple inputs',
+            html:
+            `<input type="text" id="login" class="swal2-input" placeholder="Username">
+            <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+            focusConfirm: false,
+            preConfirm: () => {
+                const login = document.querySelector('#login').value;
+                const password = document.querySelector('#password').value;
+                let ingreso = false;
+                obtenerUsuarios();
+                let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+                console.log(listaUsuarios);
+                if (!login || !password) {
+                    alert(`Please enter login and password`)
+                }else{
+                    for (let i = 0; i < listaUsuarios.length; i++) {
+                        if (login == listaUsuarios[i].nombre && password == listaUsuarios[i].pass) {
+                            ingreso = true;
+                        }
+                    }
+                    if(ingreso == true){
+                        console.log("Bienvenido/a");
+                    }else{
+                        console.log(`Datos incorrectos`);
+                    }
+                }    
+                return [
+                    document.getElementById('login').value,
+                    document.getElementById('password').value
+                ]
+            }
+        })
+        if (formValues) {
+            console.log(formValues);
+            Swal.fire(JSON.stringify(formValues))
+        }   
+    })()
 })
-
 // Productos
 class Producto {
     constructor(id,nombre,precio,img,stock) {
@@ -183,7 +222,8 @@ if (crearProdAdmin !== null){
     });
 }
 // Fetch inventario
-const database = "inventario.json"
+const database = "inventario.json";
+const userList = "usuarios.json"
 const obtenerDatos = async ()=>{
     try{
         let datos = await fetch(database);
@@ -192,6 +232,19 @@ const obtenerDatos = async ()=>{
         if(listaProductos = []){
             listaProductos = response;
             localStorage.setItem("productos",JSON.stringify(listaProductos));
+        }
+    } catch(error){
+        console.log(error);
+    }
+}
+const obtenerUsuarios = async ()=>{
+    try{
+        let datos = await fetch(userList);
+        let response = await datos.json();
+        let listaProductos = JSON.parse(localStorage.getItem("usuarios")) || [];
+        if(listaProductos = []){
+            listaProductos = response;
+            localStorage.setItem("usuarios",JSON.stringify(listaProductos));
         }
     } catch(error){
         console.log(error);

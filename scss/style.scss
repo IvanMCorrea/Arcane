@@ -3,6 +3,17 @@
 @import "typography";
 @import "mixins";
 
+//inputs number sin controles
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
 a{
     text-decoration: none;
 }
@@ -42,6 +53,22 @@ td{
     width: 100px;
     height: auto;
 }
+.hidden{
+    visibility: hidden;
+}
+//Buttons
+.btn-ppal{
+    background-color: map-get($map: $PaletaColores, $key: "buttons");
+    color: map-get($map: $PaletaColores, $key: "Link");
+    padding: .8rem;
+    margin: 1rem;
+    @include BordesRedondeados;
+    @include Zoom;
+    transition: background-color .3s;
+    &:hover{
+        background-color: map-get($map: $PaletaColores, $key: "btn-selected");
+    }
+}
 /* Nav */
 .navegador{
     padding-top: 1rem;
@@ -78,14 +105,31 @@ td{
     }
 }
 /* Carrito */
-.carrito{
-    position: absolute;
+.cart-quantity {
+    background-color: map-get($map: $PaletaColores, $key: "Link");
+    position: fixed;
+    width: 1.5rem;
+    right: 1.5rem;
+    top: 1.5rem;
+    z-index: 100;
+    border: solid 2px white;
+    border-radius: 1rem;
+    font-weight: bolder;
+    text-align: center;
+}
+.carrito--img{
     width: 40px;
     height: auto;
-    z-index: 100;
+}
+.carrito{
+    position: fixed;
+    width: 40px;
+    height: auto;
+    z-index: 101;
     right: 2.5rem;
     top: 2.5rem;
     cursor: pointer;
+    
 }
 .carrito__overlay{
     position: fixed;
@@ -114,9 +158,38 @@ td{
     cursor: pointer;
 }
 .carrito__modal__item--img{
-    width: 10%;
+    width: 15%;
     height: auto;
     border-radius: .5rem;
+    margin-top: 1rem;
+}
+.carrito__modal__item--text{
+    color: map-get($map: $PaletaColores, $key: "Link");
+    margin: 1rem;
+}
+.carrito__modal__item--price{
+    color: map-get($map: $PaletaColores, $key: "Link");
+}
+.carrito__modal__item--cantidad{
+    border-radius: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem;
+}
+.carrito__modal__item--borrar{
+    font-weight: bolder;
+    background-color: beige;
+    padding: .5rem;
+    border-radius: .5rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color .3s;
+    &:hover{
+        background-color: #E3D37B;
+    }
 }
 .cart-is-empty {
     color: white;
@@ -149,6 +222,10 @@ td{
     border: none;
     cursor: pointer;
     margin: 2em 0 1em 0;
+    transition: background-color .3s;
+    &:hover{
+        background-color: #E3D37B;
+    }
 }
 .product-rows {
     margin-top: 3em;
