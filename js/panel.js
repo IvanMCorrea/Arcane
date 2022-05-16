@@ -44,7 +44,6 @@ const restarStockPanel = (id) =>{
 /* Muestra una lista con los productos cargados al LocalStorage */
 const imprimirDatos = () => {
     if (verificarStorage() != undefined) {
-        /*  */
         verificarStorage().forEach(obj => {
             document.getElementById("tabla").innerHTML += `
                 <tr>

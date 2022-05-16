@@ -241,10 +241,10 @@ const obtenerUsuarios = async ()=>{
     try{
         let datos = await fetch(userList);
         let response = await datos.json();
-        let listaProductos = JSON.parse(localStorage.getItem("usuarios")) || [];
-        if(listaProductos = []){
-            listaProductos = response;
-            localStorage.setItem("usuarios",JSON.stringify(listaProductos));
+        let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        if(listaUsuarios = []){
+            listaUsuarios = response;
+            localStorage.setItem("usuarios",JSON.stringify(listaUsuarios));
         }
     } catch(error){
         console.log(error);

@@ -22,6 +22,8 @@ const closeBtn = document.querySelector("#close-btn");
 const addToCart = document.getElementsByClassName("addToCart");
 const productRows = document.getElementsByClassName("product-row");
 const cantidadProds = document.querySelector(".cart-quantity");
+const comprarBtn = document.querySelector("#comprar");
+
 /* Evento abrir y cerrar carrito desde imagen carrito */
 carrito.addEventListener("click", ()=>{
     if(carritoOverlay.classList.contains("open")){
@@ -58,17 +60,17 @@ function agregarElem(prodId, prodName, price, imageSrc){
     let productRow = document.createElement("div");
     let productRows = document.querySelector(".product-rows");
     let prodArray = document.getElementsByClassName("product-row");
-
+    id = `id:${prodId}`
     //Verificar si el producto ya esta en el carrito
     for(let i=0; i < prodArray.length; i++) {
-        if(prodArray[i].getAttribute("id")== prodId) {
+        if(prodArray[i].getAttribute("id") == id) {
             alert("Este producto ya existe en el carrito");
             return;
         }
     }
     //Inyectar el html al carrito
     let cartRowItem = `
-        <div class="product-row" id="${prodId}">
+        <div class="product-row" id="id:${prodId}">
             <img class="carrito__modal__item--img" src="${imageSrc}">
             <span class="carrito__modal__item--text">${prodName}</span>
             <span class="cart-price carrito__modal__item--price">${price}</span>
@@ -112,5 +114,25 @@ function updatePrice() {
     }else{
         cantidadProds.classList.add("hidden");
     }
+}
+/* Comprar */
+comprarBtn.addEventListener("click", () => {
+    comprar();
+})
+const comprar = () =>{
+    let carritoProds = document.querySelectorAll(".product-row");
+    let cantidadProds = document.querySelectorAll(".product-quantity");
+    const carritoVenta = [];
+    /* Resolver */
+    for (let i=0; i < cantidadProds.length; i++){
+        let id = carritoProds[i].getAttribute("id");
+        let cantidad = cantidadProds[i].value;
+        let ele = {
+            id: id,
+            cant: cantidad
+        }
+        carritoVenta.push(ele)
+    }
+    localStorage.setItem("carrito", JSON.stringify(carritoVenta));
 }
 updatePrice()
