@@ -30,7 +30,25 @@
                 <div class="navegador__items__item order-5 order-md-5 col-3 col-md-2 col-xl-1"><a href="contact.html" class="navegador__items__item--link">Contact</a></div>
             </div>
         </nav>
-        <a href=""><img src="img/Carrito.svg" alt="carrito compras" class="carrito"></a>
+        <!-- Login Overlay -->
+        <div class="login__overlay">
+            <div class="login__modal container">
+                <a id="close-btn"><img src="img/close.svg" class="carrito__modal--close"></a>
+                <form class="login__form row">
+                    <div class="col-12 pb-2">
+                        <label for="usuario">User</label>
+                        <input type="text" id="usuario" required>
+                    </div>
+                    <div class="col-12 pb-2">
+                        <label for="pass">Password</label>
+                        <input type="password" id="pass" required>
+                    </div>
+                    <div class="col-12 pb-2">
+                        <button>Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- Landing -->
         <section class="video container-fluid mx-0 px-0">
             <!-- Video -->

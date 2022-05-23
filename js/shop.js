@@ -1,4 +1,4 @@
-prods = JSON.parse(localStorage.getItem("productos"));
+let prods = JSON.parse(localStorage.getItem("productos"));
 // Productos
 prods.forEach(el => {
     /* Inyectar html de las cards */
@@ -20,7 +20,6 @@ const carrito = document.querySelector(".carrito");
 const carritoOverlay = document.querySelector(".carrito__overlay");
 const closeBtn = document.querySelector("#close-btn");
 const addToCart = document.getElementsByClassName("addToCart");
-const productRows = document.getElementsByClassName("product-row");
 const cantidadProds = document.querySelector(".cart-quantity");
 const comprarBtn = document.querySelector("#comprar");
 
@@ -102,6 +101,7 @@ function cambiarCantidad(e){
 /* Actualizar el total */
 function updatePrice() {
     let total = 0;
+    let productRows = document.getElementsByClassName("product-row");
     for(const producto of productRows) {
         let price = parseFloat(producto.querySelector(".cart-price").innerText.replace("$",""));
         let cantidad = producto.querySelector(".product-quantity").value;
@@ -116,8 +116,10 @@ function updatePrice() {
     }
 }
 /* Comprar */
-comprarBtn.addEventListener("click", () => {
+comprarBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     comprar();
+    window.open("cart.html");
 })
 const comprar = () =>{
     let carritoProds = document.querySelectorAll(".product-row");

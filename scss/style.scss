@@ -104,6 +104,36 @@ td{
         width: 85px;
     }
 }
+/* Login */
+.login__overlay {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    transform: translateX(+200%);
+    transition: 0.8s ease-in-out;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.login__overlay.open {
+    transform: translateX(0%);
+}
+.login__modal {
+    height: 50vh;
+    width: 40%;
+    background-color: rgb(50,50,50);
+    overflow: hidden;
+    overflow-x: hidden;
+    padding-top: 5%;
+    margin-top: 15%;
+    @include BordesRedondeados;
+}
+.login__form {
+    display: flex;
+    color: white;
+    justify-content: center;
+}
 /* Carrito */
 .cart-quantity {
     background-color: map-get($map: $PaletaColores, $key: "Link");

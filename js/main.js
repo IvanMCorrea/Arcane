@@ -53,9 +53,9 @@ crearCuenta.addEventListener("click", (e)=>{
     newUsers();
 })
 // Llamar función para Iniciar Sesión mediante link
-let ingresarCuenta = document.querySelector("#ingresarCuenta");
+/* let ingresarCuenta = document.querySelector("#ingresarCuenta");
 ingresarCuenta.addEventListener("click", (e)=>{
-    e.preventDefault();
+    e.preventDefault(); */
 /*     //login();
     Swal.fire({
         title: 'Login Form',
@@ -95,7 +95,7 @@ ingresarCuenta.addEventListener("click", (e)=>{
             }
         })
 }) */
-    (async () => {
+    /* (async () => {
         const { value: formValues } = await Swal.fire({
             title: 'Multiple inputs',
             html:
@@ -134,7 +134,29 @@ ingresarCuenta.addEventListener("click", (e)=>{
             Swal.fire(JSON.stringify(formValues))
         }   
     })()
+}) */
+// Login Modal
+let ingresarCuenta = document.querySelector("#ingresarCuenta");
+const loginOverlay = document.querySelector(".login__overlay");
+ingresarCuenta.addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(loginOverlay.classList.contains("open")){
+        loginOverlay.classList.remove("open");
+    }else{
+        loginOverlay.classList.add("open");
+    }
 })
+/* Evento cerrar modal clickeando fuera */
+loginOverlay.addEventListener("click", (e)=>{
+    if(e.target.classList.contains("login__overlay")){
+        loginOverlay.classList.remove("open");
+    }
+})
+const closeBtn = document.querySelector("#close-btn");
+closeBtn.addEventListener("click",()=>{
+    loginOverlay.classList.remove("open");
+})
+
 // Productos
 class Producto {
     constructor(id,nombre,precio,img,stock) {
