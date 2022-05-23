@@ -122,13 +122,13 @@ td {
   width: 100vw;
   height: 100%;
   z-index: 2;
-  transform: translateX(200%);
+  transform: translateY(-200%);
   transition: 0.8s ease-in-out;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.6); }
 
 .login__overlay.open {
-  transform: translateX(0%); }
+  transform: translateY(0%); }
 
 .login__modal {
   height: 50vh;
@@ -273,6 +273,60 @@ td {
 .product-row {
   display: flex;
   align-items: center; }
+
+/* Compra */
+.compra {
+  padding-top: 15rem;
+  padding-bottom: 3rem; }
+
+.compra__contenedor {
+  background-color: white;
+  border-radius: 2.5rem; }
+
+.compra__contenedor__card {
+  display: inline-flex;
+  padding: 1rem;
+  justify-content: space-around;
+  align-items: center; }
+
+.compra__contenedor__total {
+  display: inline-flex;
+  padding: 1rem;
+  justify-content: end;
+  align-items: center;
+  padding-right: 5rem; }
+
+.compra__contenedor__card--img {
+  width: 15%;
+  height: auto;
+  border-radius: .5rem;
+  margin-top: 1rem; }
+
+.compra__contenedor__total--text {
+  padding: 2rem; }
+
+.compra__contenedor__total--text {
+  padding: 2rem; }
+
+.compra__button {
+  display: flex;
+  justify-content: center; }
+
+.compra__button--btn {
+  margin-bottom: 5rem;
+  width: 8rem;
+  height: 4rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  background-color: beige;
+  padding: 2%;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color .3s; }
+  .compra__button--btn:hover {
+    background-color: #E3D37B; }
 
 /* Video Landing */
 .video {
