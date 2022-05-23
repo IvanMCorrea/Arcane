@@ -152,8 +152,8 @@ loginOverlay.addEventListener("click", (e)=>{
         loginOverlay.classList.remove("open");
     }
 })
-const closeBtn = document.querySelector("#close-btn");
-closeBtn.addEventListener("click",()=>{
+const closeBtnLogin = document.querySelector("#close-btn-login");
+closeBtnLogin.addEventListener("click",()=>{
     loginOverlay.classList.remove("open");
 })
 
