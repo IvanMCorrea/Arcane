@@ -7,137 +7,84 @@ class NewUser{
     }
 }
 //              - Agregar Usuario
+let sendRegister = document.querySelector("#sendRegister");
+sendRegister.addEventListener("click", (e)=>{
+    e.preventDefault();
+    newUsers();
+})
 const newUsers = () => {
-    alert("Cree cuenta nueva");
-    let user = prompt("Ingrese nombre de usuario");
-    let pass = prompt("Ingrese contraseña");
-    alert("Cuenta nueva creada!");
+    let user = document.querySelector("#usuarioRegister").value;
+    let pass = document.querySelector("#passRegister").value;
     let carrito = [];
     let user1 = new NewUser(user,pass,carrito);
     let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     listaUsuarios.push(user1);
     localStorage.setItem("usuarios",JSON.stringify(listaUsuarios));
-    console.log(listaUsuarios);
+    Swal.fire({
+        icon: 'success',
+        title: 'Excellent!',
+        text: 'New account creation was successful'
+    })
+    registerOverlay.classList.remove("open");
 }
 //              - Iniciar sesión
+let sendLogin = document.querySelector("#sendLogin");
+sendLogin.addEventListener("click", (e)=>{
+    e.preventDefault();
+    login();
+})
 function login(){
-    let intentos = 3;
     let ingreso = false;
-    alert("Inicie Sesión");
-    let field1 = prompt("Ingrese nombre de usuario");
-    let field2 = prompt("Ingrese contraseña");
+    let field1 = document.querySelector("#usuarioLogin").value;
+    let field2 = document.querySelector("#passLogin").value;
     let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     /*  Utilizar LocalStorage para ingresar (En proceso)  */
-    while (intentos > 0 ) {
-        for (let i = 0; i < listaUsuarios.length; i++) {
-            if (field1 == listaUsuarios[i].user && field2 == listaUsuarios[i].pass) {
-                ingreso = true;
-            }
-        }
-        if(ingreso == true){
-            alert("Bienvenido/a");
-            console.log("Bienvenido/a");
-            intentos = 0;
-        }else{
-            alert(`Datos incorrectos, le quedan ${intentos} intentos`);
-            field1 = prompt("Ingrese nombre de usuario");
-            field2 = prompt("Ingrese contraseña");
-            intentos--;
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        if((field1 === listaUsuarios[i].user) && (field2 === listaUsuarios[i].pass)){
+            ingreso = true;
         }
     }
+    if(ingreso == true){
+        Swal.fire({
+            icon: 'success',
+            title: 'Welcome!',
+            text: 'Login was successful'
+        })
+        loginOverlay.classList.remove("open");
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'the data entered is incorrect'
+        })
+    }    
 }
 // Llamar función para Agregar Usuarios mediante link
 let crearCuenta = document.querySelector("#cuentaNueva");
+let registerOverlay = document.querySelector(".register__overlay");
+const closeBtnRegister = document.querySelector("#close-btn-register");
 crearCuenta.addEventListener("click", (e)=>{
     e.preventDefault();
-    newUsers();
+    if(registerOverlay.classList.contains("open")){
+        registerOverlay.classList.remove("open");
+    }else{
+        registerOverlay.classList.add("open");
+    }
 })
-// Llamar función para Iniciar Sesión mediante link
-/* let ingresarCuenta = document.querySelector("#ingresarCuenta");
-ingresarCuenta.addEventListener("click", (e)=>{
-    e.preventDefault(); */
-/*     //login();
-    Swal.fire({
-        title: 'Login Form',
-        html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-        <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-        confirmButtonText: 'Sign in',
-        focusConfirm: false,
-        preConfirm: () => {
-            const login = document.querySelector('#login').value
-            const password = document.querySelector('#password').value
-            if (!login || !password) {
-                showValidationMessage(`Please enter login and password`)
-            }
-            return { login: login, password: password }
-        }
-    })
-        .then((result) => {
-            let login = result.value.login;
-            let password = result.value.password;
-            let intentos = 3;
-            let ingreso = false;
-            let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            if (!login || !password) {
-                showValidationMessage(`Please enter login and password`)
-            }else{
-                for (let i = 0; i < listaUsuarios.length; i++) {
-                    if (login == listaUsuarios[i].user && password == listaUsuarios[i].pass) {
-                        ingreso = true;
-                    }
-                }
-                if(ingreso == true){
-                    console.log("Bienvenido/a");
-                    intentos = 0;
-                }else{
-                    console.log(`Datos incorrectos`);
-                }
-            }
-        })
-}) */
-    /* (async () => {
-        const { value: formValues } = await Swal.fire({
-            title: 'Multiple inputs',
-            html:
-            `<input type="text" id="login" class="swal2-input" placeholder="Username">
-            <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-            focusConfirm: false,
-            preConfirm: () => {
-                const login = document.querySelector('#login').value;
-                const password = document.querySelector('#password').value;
-                let ingreso = false;
-                obtenerUsuarios();
-                let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-                console.log(listaUsuarios);
-                if (!login || !password) {
-                    alert(`Please enter login and password`)
-                }else{
-                    for (let i = 0; i < listaUsuarios.length; i++) {
-                        if (login == listaUsuarios[i].nombre && password == listaUsuarios[i].pass) {
-                            ingreso = true;
-                        }
-                    }
-                    if(ingreso == true){
-                        console.log("Bienvenido/a");
-                    }else{
-                        console.log(`Datos incorrectos`);
-                    }
-                }    
-                return [
-                    document.getElementById('login').value,
-                    document.getElementById('password').value
-                ]
-            }
-        })
-        if (formValues) {
-            console.log(formValues);
-            Swal.fire(JSON.stringify(formValues))
-        }   
-    })()
-}) */
+/* Evento cerrar modal clickeando fuera */
+registerOverlay.addEventListener("click", (e)=>{
+    if(e.target.classList.contains("register__overlay")){
+        registerOverlay.classList.remove("open");
+    }
+})
+closeBtnRegister.addEventListener("click",()=>{
+    registerOverlay.classList.remove("open");
+})
 // Login Modal
+// Llamar función para Iniciar Sesión mediante link
 let ingresarCuenta = document.querySelector("#ingresarCuenta");
 const loginOverlay = document.querySelector(".login__overlay");
+const closeBtnLogin = document.querySelector("#close-btn-login");
 ingresarCuenta.addEventListener("click", (e)=>{
     e.preventDefault();
     if(loginOverlay.classList.contains("open")){
@@ -152,7 +99,6 @@ loginOverlay.addEventListener("click", (e)=>{
         loginOverlay.classList.remove("open");
     }
 })
-const closeBtnLogin = document.querySelector("#close-btn-login");
 closeBtnLogin.addEventListener("click",()=>{
     loginOverlay.classList.remove("open");
 })
@@ -272,12 +218,5 @@ const obtenerUsuarios = async ()=>{
         console.log(error);
     }
 }
-// Enviar nuevos datos al inventario
-
-obtenerDatos()
-// Carrito (en proceso)
-//          - Agregar al Carrito
-
-//          - Eliminar del Carrito
-
-//          - Total Carrito
+obtenerUsuarios();
+obtenerDatos();

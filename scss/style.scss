@@ -104,13 +104,61 @@ td{
         width: 85px;
     }
 }
+/* New Account */
+.register__overlay {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    z-index: 100;
+    top: 0;
+    transform: translateY(-200%);
+    transition: 0.8s ease-in-out;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.register__overlay.open {
+    transform: translateY(0%);
+}
+.register__modal {
+    height: 50vh;
+    width: 40%;
+    background-color: rgb(50,50,50);
+    overflow: hidden;
+    overflow-x: hidden;
+    padding-top: 5%;
+    margin-top: 15%;
+    text-align: center;
+    @include BordesRedondeados;
+}
+.register__form {
+    display: flex;
+    color: white;
+    justify-content: center;
+}
+.register__title {
+    color: white;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.register__modal--closeBtn{
+    width: 40px;
+    float: right;
+    cursor: pointer;
+}
 /* Login */
+.login__modal--closeBtn{
+    width: 40px;
+    float: right;
+    cursor: pointer;
+}
 .login__overlay {
     position: fixed;
     display: flex;
     width: 100vw;
     height: 100%;
-    z-index: 2;
+    top: 0;
+    z-index: 100;
     transform: translateY(-200%);
     transition: 0.8s ease-in-out;
     justify-content: center;
@@ -127,12 +175,18 @@ td{
     overflow-x: hidden;
     padding-top: 5%;
     margin-top: 15%;
+    text-align: center;
     @include BordesRedondeados;
 }
 .login__form {
     display: flex;
     color: white;
     justify-content: center;
+}
+.login__title {
+    color: white;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 /* Carrito */
 .cart-quantity {
@@ -174,12 +228,15 @@ td{
 }
 .carrito__modal{
     height: 100vh;
-    width: 40%;
+    width: 100%;
     background-color: rgb(50,50,50);
     float: right;
     overflow: scroll;
     overflow-x: hidden;
     padding-top: 150px;
+    @media (min-width: 550px){
+        width: 40%;
+    }
 }
 .carrito__modal--close{
     width: 40px;
@@ -353,6 +410,41 @@ td{
     }
     @media (min-width: 1400px){
         width: 100px;
+    }
+}
+/* Lista Videos */
+.listaVideos{
+    padding-top: 15rem;
+    padding-bottom: 3rem;
+    color: beige;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.listaVideos__title--img{
+    height: 50px;
+    @media (min-width: 768px){
+        height: 70px;
+    }
+    @media (min-width: 1400px){
+        height: 85px;
+    }
+}
+.listaVideos__item{
+    margin-bottom: 2rem;
+}
+.listaVideos__item--title{
+    margin-bottom: 1rem;
+}
+.listaVideos__item--img{
+    margin-bottom: 1rem;
+    width: 200px;
+    @media (min-width: 375px){
+        width: 350px;
+    }
+    @media (min-width: 550px){
+        width: 500px;
     }
 }
 /* Audio */

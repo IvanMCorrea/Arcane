@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/themes@5.0.11/wordpress-admin/wordpress-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap-grid.rtl.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="img/A_arcane.png" type="image/x-icon">
@@ -30,21 +29,42 @@
                 <div class="navegador__items__item order-5 order-md-5 col-3 col-md-2 col-xl-1"><a href="contact.html" class="navegador__items__item--link">Contact</a></div>
             </div>
         </nav>
+        <!-- New Account Overlay -->
+        <div class="register__overlay">
+            <div class="register__modal container">
+                <h2 class="register__title">New Account</h2>
+                <a id="close-btn-register"><img src="img/close.svg" class="register__modal--closeBtn"></a>
+                <form class="register__form row">
+                    <div class="col-12 pb-2">
+                        <label for="usuarioRegister">User</label>
+                        <input type="text" id="usuarioRegister" required>
+                    </div>
+                    <div class="col-12 pb-2">
+                        <label for="passRegister">Password</label>
+                        <input type="password" id="passRegister" required>
+                    </div>
+                    <div class="col-12 pb-2">
+                        <button id="sendRegister">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- Login Overlay -->
         <div class="login__overlay">
             <div class="login__modal container">
-                <a id="close-btn-login"><img src="img/close.svg" class="carrito__modal--close"></a>
+                <a id="close-btn-login"><img src="img/close.svg" class="login__modal--closeBtn"></a>
+                <h2 class="login__title">Login</h2>
                 <form class="login__form row">
                     <div class="col-12 pb-2">
-                        <label for="usuario">User</label>
-                        <input type="text" id="usuario" required>
+                        <label for="usuarioLogin">User</label>
+                        <input type="text" id="usuarioLogin" required>
                     </div>
                     <div class="col-12 pb-2">
-                        <label for="pass">Password</label>
-                        <input type="password" id="pass" required>
+                        <label for="passLogin">Password</label>
+                        <input type="password" id="passLogin" required>
                     </div>
                     <div class="col-12 pb-2">
-                        <button>Send</button>
+                        <button id="sendLogin">Send</button>
                     </div>
                 </form>
             </div>
