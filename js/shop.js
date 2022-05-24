@@ -1,20 +1,34 @@
-let prods = JSON.parse(localStorage.getItem("productos"));
 // Productos
-prods.forEach(el => {
-    /* Inyectar html de las cards */
-    let nodo = document.createElement("div");
-    nodo.innerHTML = `
-        <img src="${el.img}" alt="${el.nombre}" class="productos__cards--img">
-        <div class="productos__cards--text">
-            <h3>${el.nombre}</h3>
-            <p class="product-price">$${el.precio}</p>
-            <button class="addToCart btn-ppal">Add to Cart</button>
-        </div>
-    `
-    nodo.className = "productos__cards--card col";
-    nodo.setAttribute('id', el.id);
-    document.getElementById("cards").appendChild(nodo);
-})
+const publicarDatos = async ()=>{
+    try{
+        let datos = await fetch("inventario.json");
+        let response = await datos.json();
+        let listaProductos = JSON.parse(localStorage.getItem("productos")) || [];
+        if(listaProductos = []){
+            listaProductos = response;
+            localStorage.setItem("productos",JSON.stringify(listaProductos));
+        }
+        let prods = JSON.parse(localStorage.getItem("productos"));
+        prods.forEach(el => {
+            /* Inyectar html de las cards */
+            let nodo = document.createElement("div");
+            nodo.innerHTML = `
+                <img src="${el.img}" alt="${el.nombre}" class="productos__cards--img">
+                <div class="productos__cards--text">
+                    <h3>${el.nombre}</h3>
+                    <p class="product-price">$${el.precio}</p>
+                    <button class="addToCart btn-ppal">Add to Cart</button>
+                </div>
+            `
+            nodo.className = "productos__cards--card col";
+            nodo.setAttribute('id', el.id);
+            document.getElementById("cards").appendChild(nodo);
+        })
+    } catch(error){
+        console.log(error);
+    }
+}
+
 // Carrito
 const carrito = document.querySelector(".carrito");
 const carritoOverlay = document.querySelector(".carrito__overlay");
@@ -138,3 +152,4 @@ const comprar = () =>{
     localStorage.setItem("carrito", JSON.stringify(carritoVenta));
 }
 updatePrice()
+publicarDatos();
