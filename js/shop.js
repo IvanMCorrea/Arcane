@@ -24,6 +24,11 @@ const publicarDatos = async ()=>{
             nodo.setAttribute('id', el.id);
             document.getElementById("cards").appendChild(nodo);
         })
+        /* Asignar a cada boton la funcion agregarCarrito */
+        for (let i=0; i < addToCart.length; i++) {
+            let boton = addToCart[i];
+            boton.addEventListener("click", agregarCarrito);
+        }
     } catch(error){
         console.log(error);
     }
@@ -54,11 +59,6 @@ carritoOverlay.addEventListener("click", (e)=>{
         carritoOverlay.classList.remove("open");
     }
 })
-/* Asignar a cada boton la funcion agregarCarrito */
-for (let i=0; i < addToCart.length; i++) {
-    let boton = addToCart[i];
-    boton.addEventListener("click", agregarCarrito);
-}
 /* Agregar al carrito */
 function agregarCarrito(e) {
     let boton = e.target;
