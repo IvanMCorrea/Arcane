@@ -49,7 +49,7 @@ const comprarProductos = () => {
         title: 'Thank you for your purchase',
         text: 'We will send you an email with the information of your order'
     }).then(() => {
-        return (window.location.href = "/delivery.html");
+        return (window.location.href = "Arcane/delivery.html");
     });
 }
 obtenerProductos(); 
