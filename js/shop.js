@@ -75,10 +75,38 @@ function agregarElem(prodId, prodName, price, imageSrc){
     let prodArray = document.getElementsByClassName("product-row");
     id = `id:${prodId}`
     //Verificar si el producto ya esta en el carrito
-    for(let i=0; i < prodArray.length; i++) {
-        if(prodArray[i].getAttribute("id") == id) {
-            alert("Este producto ya existe en el carrito");
-            return;
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'center-end',
+        background: "#202020",
+        color: "#ede0ce",
+        showConfirmButton: false,
+        timer: 1500,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+    if (prodArray.length < 1){
+        Toast.fire({
+            icon: 'success',
+            title: 'Item added successfully'
+          })
+    } else{
+        for(let i=0; i < prodArray.length; i++) {
+            if(prodArray[i].getAttribute("id") == id) {
+                Swal.fire(
+                    'Oops...',
+                    'That item is already in the cart',
+                    'error'
+                  )
+                return;
+            }else{
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Item added successfully'
+                  })
+            }
         }
     }
     //Inyectar el html al carrito

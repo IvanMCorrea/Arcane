@@ -36,23 +36,31 @@
     },
     {
         "id": 6,
+        "nombre": "Ekko Unlocked Statue",
+        "precio": 120,
+        "img": "img/Figure-Ekko.png",
+        "stock": 3
+    },
+    {
+        "id": 7,
         "nombre": "Powder & Vi Statue",
         "precio": 150,
         "img": "img/Powder-Vi-Statue.png",
         "stock": 2
     },
     {
-        "id": 7,
+        "id": 8,
         "nombre": "Limited Event Set",
         "precio": 150,
         "img": "img/Limited-Set.jpg",
         "stock": 5
     },
     {
-        "id": 8,
+        "id": 9,
         "nombre": "Jinx Rocklove Necklace",
         "precio": 25,
         "img": "img/Rocklove-Necklace.png",
         "stock": 10
     }
+    
 ]
