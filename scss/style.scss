@@ -14,6 +14,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+input{
+    padding: 0 1rem;
+}
+textarea {
+    padding: 0.5rem 1rem 0;
+}
 a{
     text-decoration: none;
 }
@@ -37,6 +43,7 @@ td{
 .Background{
     background: $BackgroundColor;
     min-height: 100vh;
+    justify-content: space-between;
 }
 .hidden {
     display: none !important;
@@ -62,6 +69,7 @@ td{
     color: map-get($map: $PaletaColores, $key: "Link");
     padding: .8rem;
     margin: 1rem;
+    min-width: 5rem;
     -webkit-box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
@@ -248,7 +256,7 @@ td{
     cursor: pointer;
 }
 .carrito__modal__item--img{
-    width: 15%;
+    width: 100%;
     height: auto;
     border-radius: .5rem;
     margin-top: 1rem;
@@ -325,8 +333,10 @@ td{
     
 }
 .product-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr 2fr 2fr 1fr;
     align-items: center;
+    text-align: center;
 }
 /* Compra */
 .compra{
@@ -338,11 +348,14 @@ td{
 }
 .compra__contenedor{
     background-color: white;
+    padding: 1.5rem;
+    text-align: center;
     @include BordesRedondeados;
 }
 .compra__contenedor__card--title{
     visibility: hidden;
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr 2fr 2fr 1fr;
     padding: 1.5rem 1rem 1rem 1rem;
     justify-content: space-around;
     align-items: center;
@@ -351,7 +364,8 @@ td{
     }
 }
 .compra__contenedor__card{
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr 2fr 2fr 1fr;
     padding: 1rem;
     justify-content: space-around;
     align-items: center;
@@ -364,7 +378,7 @@ td{
     padding-right: 5rem;
 }
 .compra__contenedor__card--img{
-    width: 15%;
+    width: 100%;
     height: auto;
     border-radius: .5rem;
     margin-top: 1rem;
@@ -471,6 +485,10 @@ td{
         width: 500px;
     }
 }
+.listaVideos__item--separador{
+    width: 80%;
+    margin: 2rem 0 2rem 0;
+}
 /* Audio */
 .audio{
     @include BordesRedondeados;
@@ -537,7 +555,7 @@ td{
     flex-direction: column;
     text-align: center;
     margin: 1rem;
-    background-color: beige;
+    background: linear-gradient(90deg, #E6B980 0%, #EACDA3 100%);
     -webkit-box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
@@ -579,18 +597,48 @@ td{
     margin-bottom: 10rem;
     display: flex;
     justify-content: center;
+    @media (min-width: 768px){
+        margin-top: 15rem;
+    }
 }
 .formulario__innerForm{
-    padding: 10%;
-    width: 50%;
+    padding: 5%;
+    width: 80%;
     height: auto;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    background-color: beige;
+    background: linear-gradient(90deg, #E6B980 0%, #EACDA3 100%);
     @include BordesRedondeados;
+    @media (min-width: 768px){
+        width: 50%;
+    }
 }
 .formulario__innerForm__input{
+    width: 10rem;
+    height: 2rem;
     @include BordesRedondeados;
+    @media (min-width: 768px){
+        width: 20rem;
+    }
+}
+.formulario__innerForm__input--textarea{
+    width: 10rem;
+    @include BordesRedondeados;
+    @media (min-width: 768px){
+        width: 20rem;
+    }
+}
+.formulario__innerForm__input--title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.formulario__innerForm__input--label{
+    font-family: 'Montserrat', sans-serif;
+    font-size: x-large;
+    font-weight: bold;
 }
 /* Panel */
 #tabla{

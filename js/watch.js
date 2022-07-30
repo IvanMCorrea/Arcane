@@ -19,6 +19,7 @@ const publicarVideos = () =>{
     for (let i=0; i < storage.length; i++){
         let nodo = document.createElement("div");
             nodo.innerHTML = `
+                <img class="listaVideos__item--separador" src="img/separador.png" alt="separador">
                 <h2 class="listaVideos__item--title">S${storage[i].S} E${storage[i].E}</h2>
                 <img src="${storage[i].img}" alt="${storage[i].Title}" class="listaVideos__item--img">
                 <h3 class="listaVideos__item--title">${storage[i].Title}</h3>

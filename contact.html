@@ -71,32 +71,39 @@
         </div>
         <!-- Form -->
         <main class="formulario container-fluid">
-            <form class="formulario__innerForm row">
+            <form class="formulario__innerForm">
+                <h1 class="pb-5 formulario__innerForm__input--title">CONTACT</h1>
                 <!-- Nombre -->
                 <div class="col-12 pb-2">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre" class="formulario__innerForm__input--label">Nombre</label>
+                </div>
+                <div class="pb-2">
                     <input type="text" id="nombre" class="formulario__innerForm__input" required>
                 </div>
                 <!-- Apellido -->
                 <div class="col-12 pb-2">
-                    <label for="apellido">Apellido</label>
+                    <label for="apellido" class="formulario__innerForm__input--label">Apellido</label>
+                </div>
+                <div class="pb-2">
                     <input type="text" id="apellido" class="formulario__innerForm__input" required>
                 </div>
                 <!-- Email -->
                 <div class="col-12 pb-2">
-                    <label for="email">Email</label>
+                    <label for="email" class="formulario__innerForm__input--label">Email</label>
+                </div>
+                <div class="pb-2">
                     <input type="email" id="email" class="formulario__innerForm__input" required>
                 </div>
                 <!-- Mensaje -->
                 <div class="col-12 pb-2">
-                    <label for="mensaje">Message</label>
+                    <label for="mensaje" class="formulario__innerForm__input--label">Message</label>
                 </div>
-                <div>
-                    <textarea id="mensaje" cols="30" rows="3" class="formulario__innerForm__input"></textarea>
+                <div class="pb-2">
+                    <textarea id="mensaje" cols="30" rows="10" class="formulario__innerForm__input--textarea"></textarea>
                 </div>
                 <!-- Button -->
                 <div class="col-4">
-                    <button id="btn">Send</button>
+                    <button id="btn" class="btn-ppal">Send</button>
                 </div>
             </form>
         </main>
