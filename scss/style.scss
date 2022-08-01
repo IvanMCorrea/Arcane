@@ -537,7 +537,6 @@ td{
     height: 500px;
     margin: 2rem;
     @include BordesRedondeados;
-    @include Zoom;
 }
 /* Productos */
 .productos{
@@ -583,6 +582,7 @@ td{
 }
 .footer__items{
     justify-content: space-around;
+    padding-bottom: 2rem;
 }
 .footer__items__item{
     padding: 1rem 0 0 1rem;
@@ -590,6 +590,14 @@ td{
 .footer__items__item--link{
     font-size: 20px;
     @include Link;
+}
+.footer__copy{
+    text-align: center;
+    width: 75%;
+    color: gainsboro;
+    margin: 0 auto;
+    padding-top: 1rem;
+    border-top: 1px solid grey;
 }
 /* Formulario */
 .formulario{
